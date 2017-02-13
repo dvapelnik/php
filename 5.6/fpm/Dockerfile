@@ -125,6 +125,8 @@ RUN set -xe \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
 	&& make clean \
 	&& docker-php-source delete \
+	&& echo "\n" | pecl install memcache-3.0.8 \
+    	&& echo "extension=memcache.so" > /usr/local/etc/php/conf.d/memcache.ini \
 	\
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDeps
 
