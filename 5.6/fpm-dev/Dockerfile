@@ -5,7 +5,7 @@ MAINTAINER  Dmitry Vapelnik <dvapelnik@gmail.com>
 COPY php.d/xdebug.ini /tmp/xdebug.ini
 
 RUN apt-get update && \
-    apt-get install -y libpng12-dev sudo git zip unzip && \
+    apt-get install -y libpng12-dev sudo git zip unzip supervisor && \
     docker-php-ext-install pdo pdo_mysql gd && \
     pecl install xdebug && \
     echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini && \
